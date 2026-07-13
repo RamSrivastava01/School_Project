@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/useLanguage";
 import schoolImage from "../assets/images/schoolImage.jpg";
+import { getAdmissionSessionYear } from "../utils/admissionSession";
 
 function Hero() {
    const { language } = useLanguage();
+   const sessionYear = getAdmissionSessionYear();
 
    const text = {
       en: {
-         admission: "Admissions Open 2026-27",
+         admission: `Admissions Open ${sessionYear}`,
          heading: "A disciplined, caring school where children grow with confidence.",
          description:
             "Shree Pradeep Kumar Higher Secondary School brings strong academics, personal attention, and a safe campus together for families in Bharkhani, Hardoi.",
@@ -20,7 +22,7 @@ function Hero() {
          ],
       },
       hi: {
-         admission: "सत्र 2026-27 के लिए प्रवेश खुले हैं",
+         admission: `सत्र ${sessionYear} के लिए प्रवेश खुले हैं`,
          heading: "अनुशासन, देखभाल और आत्मविश्वास के साथ बच्चों का विकास।",
          description:
             "श्री प्रदीप कुमार हायर सेकेंडरी स्कूल भर्खनी, हरदोई में मजबूत पढ़ाई, व्यक्तिगत ध्यान और सुरक्षित परिसर उपलब्ध कराता है।",

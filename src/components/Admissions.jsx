@@ -1,17 +1,19 @@
 import { useLanguage } from "../context/useLanguage";
+import { getAdmissionSessionYear } from "../utils/admissionSession";
 
 function Admissions() {
    const { language } = useLanguage();
+   const sessionYear = getAdmissionSessionYear();
 
    const text = {
       en: {
-         title: "Admissions Open for 2026-27",
+         title: `Admissions Open for ${sessionYear}`,
          subtitle: "Speak with the school office for class availability, documents, fee details, and transport routes.",
          points: ["Classes 1st to 12th", "Limited seats available", "RTE admission as per norms", "Office timing: 9:00 AM to 3:00 PM"],
          btn: "Call +91 99190 29742",
       },
       hi: {
-         title: "सत्र 2026-27 के लिए प्रवेश खुले हैं",
+         title: `सत्र ${sessionYear} के लिए प्रवेश खुले हैं`,
          subtitle: "कक्षा उपलब्धता, दस्तावेज, शुल्क विवरण और परिवहन रूट की जानकारी के लिए कार्यालय से संपर्क करें।",
          points: ["कक्षा 1 से 12 तक", "सीमित सीटें उपलब्ध", "RTE प्रवेश नियमों के अनुसार", "कार्यालय समय: सुबह 9 बजे से दोपहर 3 बजे तक"],
          btn: "कॉल करें +91 99190 29742",
