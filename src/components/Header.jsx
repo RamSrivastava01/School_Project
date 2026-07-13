@@ -1,153 +1,109 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import favicon from '../assets/images/favicon.png'
-import { useLanguage } from "../context/LanguageContext";
+import favicon from "../assets/images/favicon.png";
+import { useLanguage } from "../context/useLanguage";
+
+const navItems = [
+   { label: "Home", to: "/" },
+   { label: "About", to: "/about" },
+   { label: "Academics", to: "/academics" },
+   { label: "Admissions", to: "/admissions" },
+   { label: "Contact", to: "/contact" },
+];
 
 function Header() {
    const [menuOpen, setMenuOpen] = useState(false);
-   const { language, toggleLanguage } = useLanguage()
+   const { language, toggleLanguage } = useLanguage();
+
+   const linkClass = ({ isActive }) =>
+      `rounded-full px-4 py-2 text-sm font-semibold transition ${
+         isActive
+            ? "bg-[#124e66] text-white shadow-sm"
+            : "text-slate-700 hover:bg-[#e8f3f1] hover:text-[#124e66]"
+      }`;
 
    return (
-      <>
-         {/* Top Header Bar */}
-         <header className="bg-white border-b sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-               <img
-                  src={favicon}
-                  alt="School Logo"
-                  className="hidden md:block h-10 w-auto"
-               />
-               {/* School Name */}
-               <h1 className="text-xl md:text-2xl font-bold text-[#1e40af]">
-                  Shree Pradeep Kumar H.S. School
-               </h1>
+      <header className="sticky top-0 z-50 border-b border-white/70 bg-white/88 backdrop-blur-xl">
+         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+            <NavLink to="/" className="flex min-w-0 items-center gap-3" onClick={() => setMenuOpen(false)}>
+               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#e9f6f4] shadow-inner">
+                  <img src={favicon} alt="School logo" className="h-9 w-9 object-contain" />
+               </span>
+               <span className="min-w-0">
+                  <span className="block truncate text-base font-black tracking-normal text-[#124e66] sm:text-xl">
+                     Shree Pradeep Kumar H.S. School
+                  </span>
+                  <span className="hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 sm:block">
+                     Hardoi, Uttar Pradesh
+                  </span>
+               </span>
+            </NavLink>
 
-               {/* Desktop Menu */}
-               <nav className="hidden md:flex items-center space-x-6">
-                  <NavLink end to="/" className={({ isActive }) =>
-                     isActive
-                        ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                        : "text-gray-700 hover:text-[#1e40af]"
-                  }>
-                     Home
+            <nav className="hidden items-center gap-1 md:flex">
+               {navItems.map((item) => (
+                  <NavLink key={item.to} end={item.to === "/"} to={item.to} className={linkClass}>
+                     {item.label}
                   </NavLink>
-                  <NavLink to="/about" className={({ isActive }) =>
-                     isActive
-                        ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                        : "text-gray-700 hover:text-[#1e40af]"
-                  }>
-                     About Us
-                  </NavLink>
-                  <NavLink to="/academics" className={({ isActive }) =>
-                     isActive
-                        ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                        : "text-gray-700 hover:text-[#1e40af]"
-                  }>
-                     Academics
-                  </NavLink>
-                  <NavLink to="/admissions" className={({ isActive }) =>
-                     isActive
-                        ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                        : "text-gray-700 hover:text-[#1e40af]"
-                  }>
-                     Admissions
-                  </NavLink>
-                  <NavLink to="/contact" className={({ isActive }) =>
-                     isActive
-                        ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                        : "text-gray-700 hover:text-[#1e40af]"
-                  }>
-                     Contact Us
-                  </NavLink>
+               ))}
+            </nav>
 
-                  <NavLink
-                     to="tel:+919919029742"
-                     className={({ isActive }) =>
-                        isActive
-                           ? "text-[#1e40af] font-semibold border-b-2 border-[#1e40af]"
-                           : "text-gray-700 hover:text-[#1e40af]"
-                     }
-                  >
-                     Call Now
-                  </NavLink>
-                  <button
-                     onClick={toggleLanguage}
-                     className="border border-[#1e40af] text-[#1e40af] px-3 py-1 rounded-md text-sm font-medium hover:bg-[#1e40af] hover:text-white transition"
-                  >
-                     {language === "en" ? "हिंदी" : "English"}
-                  </button>
-
-               </nav>
-
-               {/* Mobile Hamburger */}
+            <div className="hidden items-center gap-3 md:flex">
                <button
-                  className="md:hidden text-2xl text-gray-700"
-                  onClick={() => setMenuOpen(!menuOpen)}
+                  onClick={toggleLanguage}
+                  className="rounded-full border border-[#124e66]/20 px-4 py-2 text-sm font-bold text-[#124e66] transition hover:bg-[#124e66] hover:text-white"
                >
-                  ☰
+                  {language === "en" ? "हिन्दी" : "English"}
                </button>
+               <a
+                  href="tel:+919919029742"
+                  className="rounded-full bg-[#f7c948] px-5 py-2.5 text-sm font-black text-[#172033] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#facc15]"
+               >
+                  Call Now
+               </a>
             </div>
-         </header>
 
-         {/* Mobile Menu */}
+            <button
+               aria-label="Toggle menu"
+               aria-expanded={menuOpen}
+               onClick={() => setMenuOpen((open) => !open)}
+               className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 text-2xl font-black text-[#124e66] md:hidden"
+            >
+               {menuOpen ? "×" : "≡"}
+            </button>
+         </div>
+
          {menuOpen && (
-            <div className="md:hidden bg-white border-b">
-               <nav className="flex flex-col px-4 py-4 space-y-4">
-
-                  <NavLink
-                     to="/"
-                     end
-                     onClick={() => setMenuOpen(false)}
-                     className="text-gray-700"
-                  >
-                     Home
-                  </NavLink>
-
-                  <NavLink
-                     to="/about"
-                     onClick={() => setMenuOpen(false)}
-                     className="text-gray-700"
-                  >
-                     About Us
-                  </NavLink>
-
-                  <NavLink
-                     to="/academics"
-                     onClick={() => setMenuOpen(false)}
-                     className="text-gray-700"
-                  >
-                     Academics
-                  </NavLink>
-
-                  <NavLink
-                     to="/admissions"
-                     onClick={() => setMenuOpen(false)}
-                     className="text-gray-700"
-                  >
-                     Admissions
-                  </NavLink>
-
-                  <NavLink
-                     to="/contact"
-                     onClick={() => setMenuOpen(false)}
-                     className="text-gray-700"
-                  >
-                     Contact Us
-                  </NavLink>
-
-                  <a
-                     href="tel:+919919029742"
-                     onClick={() => setMenuOpen(false)}
-                     className="bg-[#16a34a] text-white text-center py-2 rounded-md font-medium"
-                  >
-                     Call Now
-                  </a>
-
+            <div className="border-t border-slate-100 bg-white px-4 py-4 shadow-lg md:hidden">
+               <nav className="mx-auto grid max-w-7xl gap-2">
+                  {navItems.map((item) => (
+                     <NavLink
+                        key={item.to}
+                        end={item.to === "/"}
+                        to={item.to}
+                        onClick={() => setMenuOpen(false)}
+                        className={linkClass}
+                     >
+                        {item.label}
+                     </NavLink>
+                  ))}
+                  <div className="mt-2 grid grid-cols-2 gap-3">
+                     <button
+                        onClick={toggleLanguage}
+                        className="rounded-full border border-[#124e66]/20 px-4 py-3 text-sm font-bold text-[#124e66]"
+                     >
+                        {language === "en" ? "हिन्दी" : "English"}
+                     </button>
+                     <a
+                        href="tel:+919919029742"
+                        className="rounded-full bg-[#f7c948] px-4 py-3 text-center text-sm font-black text-[#172033]"
+                     >
+                        Call Now
+                     </a>
+                  </div>
                </nav>
             </div>
          )}
-
-      </>
+      </header>
    );
 }
 

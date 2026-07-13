@@ -1,4 +1,3 @@
-import React from 'react'
 import AboutSchool from '../components/AboutSchool'
 
 function About() {

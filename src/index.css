@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+html {
+   scroll-behavior: smooth;
+}
+
 body {
    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+   margin: 0;
+   background:
+      radial-gradient(circle at top left, rgba(20, 184, 166, 0.14), transparent 28rem),
+      linear-gradient(180deg, #f7fbff 0%, #ffffff 42%, #f6f8fb 100%);
+   color: #172033;
+}
+
+::selection {
+   background: #facc15;
+   color: #172033;
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import Academics from '../components/Academics'
 
 function AcademicsPage() {

@@ -1,54 +1,39 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
    return (
-      <footer className="bg-[#1e40af] text-white">
-         <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
-
-            {/* School Info */}
+      <footer className="bg-[#172033] text-white">
+         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_0.8fr_1fr]">
             <div>
-               <h3 className="text-xl font-bold">
-                  Shree Pradeep Kumar H.S. School
-               </h3>
-               <p className="mt-3 text-sm text-gray-200">
-                  Providing quality education in a safe, disciplined, and
-                  student-friendly environment.
+               <h3 className="text-2xl font-black">Shree Pradeep Kumar H.S. School</h3>
+               <p className="mt-4 max-w-sm leading-7 text-white/70">
+                  Quality education in a safe, disciplined, and student-friendly environment.
                </p>
             </div>
 
-            {/* Quick Links */}
             <div>
-               <h4 className="text-lg font-semibold mb-3">
-                  Quick Links
-               </h4>
-               <ul className="space-y-2 text-sm text-gray-200">
-                  <li><a href="/" className="hover:underline">Home</a></li>
-                  <li><a href="/about" className="hover:underline">About Us</a></li>
-                  <li><a href="/admissions" className="hover:underline">Admissions</a></li>
-                  <li><a href="/academics" className="hover:underline">Academics</a></li>
-                  <li><a href="/contact" className="hover:underline">Contact</a></li>
-               </ul>
+               <h4 className="text-sm font-black uppercase tracking-[0.18em] text-[#f7c948]">Quick Links</h4>
+               <nav className="mt-4 grid gap-2 text-white/72">
+                  <Link to="/" className="hover:text-white">Home</Link>
+                  <Link to="/about" className="hover:text-white">About</Link>
+                  <Link to="/academics" className="hover:text-white">Academics</Link>
+                  <Link to="/admissions" className="hover:text-white">Admissions</Link>
+                  <Link to="/contact" className="hover:text-white">Contact</Link>
+               </nav>
             </div>
 
-            {/* Contact Info */}
             <div>
-               <h4 className="text-lg font-semibold mb-3">
-                  Contact Us
-               </h4>
-               <p className="text-sm text-gray-200">
-                  📍 Sarai Ragho, bharkhani, hardoi, 241123
-               </p>
-               <p className="mt-2 text-sm text-gray-200">
-                  📞 +91 99190 29742
-               </p>
-               <p className="mt-2 text-sm text-gray-200">
-                  ⏰ Office Time: 9:00 AM – 3:00 PM
-               </p>
+               <h4 className="text-sm font-black uppercase tracking-[0.18em] text-[#f7c948]">Contact</h4>
+               <div className="mt-4 grid gap-2 text-white/72">
+                  <p>Sarai Ragho, Bharkhani, Hardoi, 241123</p>
+                  <a href="tel:+919919029742" className="hover:text-white">+91 99190 29742</a>
+                  <p>Office Time: 9:00 AM to 3:00 PM</p>
+               </div>
             </div>
-
          </div>
 
-         {/* Bottom Bar */}
-         <div className="border-t border-blue-300">
-            <p className="text-center text-sm text-gray-200 py-4">
+         <div className="border-t border-white/10">
+            <p className="px-4 py-4 text-center text-sm text-white/60">
                © {new Date().getFullYear()} Shree Pradeep Kumar H.S. School. All rights reserved.
             </p>
          </div>
