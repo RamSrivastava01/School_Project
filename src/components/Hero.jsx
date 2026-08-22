@@ -10,13 +10,14 @@ function Hero() {
    const text = {
       en: {
          admission: `Admissions Open ${sessionYear}`,
-         heading: "A disciplined, caring school where children grow with confidence.",
+         heading:
+            "A disciplined, caring school where children grow with confidence.",
          description:
             "Shree Pradeep Kumar Higher Secondary School brings strong academics, personal attention, and a safe campus together for families in Bharkhani, Hardoi.",
          callBtn: "Call for Admission",
          learnBtn: "Explore Admissions",
          stats: [
-            ["1-12", "Classes"],
+            ["1-10", "Classes"],
             ["CCTV", "Secure Campus"],
             ["Smart", "Classrooms"],
          ],
@@ -29,7 +30,7 @@ function Hero() {
          callBtn: "प्रवेश के लिए कॉल करें",
          learnBtn: "प्रवेश जानकारी",
          stats: [
-            ["1-12", "कक्षाएं"],
+            ["1-10", "कक्षाएं"],
             ["CCTV", "सुरक्षित परिसर"],
             ["Smart", "कक्षाएं"],
          ],
@@ -42,7 +43,9 @@ function Hero() {
             <div className="relative z-10">
                <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#f7c948]/60 bg-white px-4 py-2 shadow-sm">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#0ead69]" />
-                  <span className="text-sm font-black text-[#124e66]">{text[language].admission}</span>
+                  <span className="text-sm font-black text-[#124e66]">
+                     {text[language].admission}
+                  </span>
                </div>
 
                <h1 className="max-w-3xl text-4xl font-black leading-[1.05] tracking-normal text-[#172033] sm:text-5xl lg:text-6xl">
@@ -70,9 +73,16 @@ function Hero() {
 
                <dl className="mt-10 grid max-w-2xl grid-cols-3 gap-3">
                   {text[language].stats.map(([value, label]) => (
-                     <div key={label} className="rounded-2xl border border-white bg-white/82 p-4 shadow-sm">
-                        <dt className="text-2xl font-black text-[#124e66]">{value}</dt>
-                        <dd className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">{label}</dd>
+                     <div
+                        key={label}
+                        className="rounded-2xl border border-white bg-white/82 p-4 shadow-sm"
+                     >
+                        <dt className="text-2xl font-black text-[#124e66]">
+                           {value}
+                        </dt>
+                        <dd className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                           {label}
+                        </dd>
                      </div>
                   ))}
                </dl>
@@ -86,8 +96,12 @@ function Hero() {
                   className="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-2xl shadow-[#124e66]/20"
                />
                <div className="absolute bottom-5 left-5 right-5 rounded-3xl bg-white/92 p-5 shadow-xl backdrop-blur">
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0ead69]">Sarai Ragho, Bharkhani</p>
-                  <p className="mt-2 text-2xl font-black text-[#172033]">Hardoi 241123</p>
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0ead69]">
+                     Sarai Ragho, Bharkhani
+                  </p>
+                  <p className="mt-2 text-2xl font-black text-[#172033]">
+                     Hardoi 241123
+                  </p>
                </div>
             </div>
          </div>
